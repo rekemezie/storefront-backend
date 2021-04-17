@@ -46,10 +46,11 @@ In the 2nd terminal, we would install all the dependecies that are required in t
 - later we run `PATH="$PATH"`
 - Run `node -v` to check that the version is 10 or 12
 - install bcryt for hashing passwords and sensitive data `yarn add bcrypt`
-- Install dotenv to enable us send environmnt variable o our program `yarn add dotenv`
+- Install dotenv to enable us send environment variable of our program `yarn add dotenv`
 - Install db-migrate-pg to enable postgres db migration, `yarn add db-migrate-pg`
 - Install cors to permit sending CORS payload to endpoints `yarn add cors`
 - Install json web token library to enable us verity tokens that permit us access some endpoints `yarn add jsonwebtoken`
+- Install cross-env package to  switching between environments, `npm -i cross-env`
 - install all project dependencies `yarn`
 - to test that it is working, run `yarn watch` should show an app starting on 0.0.0.0:3000
 - We bring up the database with the command `db-migrate up all`
