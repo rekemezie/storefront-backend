@@ -75,11 +75,18 @@ We setup our project to be able to use db-migrations to create database tables.
 - In the project root, we create a configuration file, `database.json`, with the configurations necesssary for db migration
 - Create a migraiton for Users table `db-migrate create users --sql-file`, this generates a migration folder in which it as a .js file for users and a folder sql whih contains .sql files for up and down commands for db-migrate.
 - For the up files we put in sql query to create users table with fields as spercified in the REQUIREMENTS.md file
-- We use down file to drop user table.
-- Create migration for Products table `db-migrate create products --sql-file`, then follow similar procedure above to set up sql queries to create and drop Products table.
-- Create migration for Orders table `db-migrate  create orders --sql-file`, then follow similar procedure above to set up sql queries to create and drop Orders table.
-- With the migrations created in the order as above, we now run `db-migrate up -c 3`, this triggers all the 3 .js files created in the migration folder to run the sql up commands and create tables
-- We can now acccess the postgres machine instance terminal connect to postgres and run `\dt `, this would show all the tables that have been created.
+- We use down file to drop users table.
+- Create migration for Products table `db-migrate create products --sql-file`.
+- For the up files we put in sql query to create products table with fields as spercified in the REQUIREMENTS.md file
+- We use down file to drop products table.
+- Create migration for Orders table `db-migrate  create orders --sql-file`.
+- For the up files we put in sql query to create orders table with fields as spercified in the REQUIREMENTS.md file
+- We use down file to drop d table.
+- Create migration for Product Orders table `db-migrate  create product_orders --sql-file`.
+- For the up files we put in sql query to create product_orders table with fields as spercified in the REQUIREMENTS.md file
+- We use down file to drop product_orders table.
+- With the migrations created in the order as above, we now run `db-migrate up all`, this triggers all the 4 .js files created in the migration folder to run the sql up commands and create tables
+- We can now acccess the postgres machine instance terminal connect to shopping database and run `\dt `, this would show all the tables that have been created.
 
 ### Models setup
 - In the root directory, we open the src directory and create a new folder `models`, inside this models folder we would create different .ts files Users.ts, Products.ts and Orders.ts.
