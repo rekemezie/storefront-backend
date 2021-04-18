@@ -50,7 +50,7 @@ In the 2nd terminal, we would install all the dependecies that are required in t
 - Install db-migrate-pg to enable postgres db migration, `yarn add db-migrate-pg`
 - Install cors to permit sending CORS payload to endpoints `yarn add cors`
 - Install json web token library to enable us verity tokens that permit us access some endpoints `yarn add jsonwebtoken`
-- Install cross-env package to  switching between environments, `npm -i cross-env`
+- Install cross-env package to  switching between environments, `yarn add cross-env`
 - install all project dependencies `yarn`
 - to test that it is working, run `yarn watch` should show an app starting on 0.0.0.0:3000
 - We bring up the database with the command `db-migrate up all`
@@ -182,7 +182,7 @@ Some orders enpoints require a verified token before it can be accessed this we 
 
 ### Testing 
 
-- Run jasmine tests with the command  `ENV=test yarn test`
+- Run jasmine tests with the command  `yarn test`
 - All tests should passes
 
 #### Note
@@ -190,5 +190,5 @@ Some orders enpoints require a verified token before it can be accessed this we 
 I made some modifications on the jasmine.json file and also on the package.json file to enable the project run smoothly.
 
 - On the `jasmine.json` file I set the value of `random` to `false` so that all tests can run in order and not randomly.
-- I also modified line 9 of my package.json file `"test": "ENV=test db-migrate --env test up all && jasmine-ts --config=spec/support/jasmine.json && db-migrate db:drop test",`. This will enable me populate a test database and drop all its tables at the end of the tests.
+- I also modified line 9 of my package.json file `"test": "db-migrate --env test up all && cross-env ENV=test jasmine-ts --config=spec/support/jasmine.json && db-migrate db:drop test",`. This will enable me populate a test database and drop all its tables at the end of the tests.
 - In our environment we used the variable JWT_KEY for the JWT secrete we have a default token `TOKEN` that we use to to create an inintal user.
