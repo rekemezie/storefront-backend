@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+const app = require('../../src/server');
 const request = require('request');
 import { Users, IUser } from '../../src/models/Users';
-const app = require('../../src/server');
+
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -13,8 +14,8 @@ const endpoint = 'http://localhost:3000/products';
 describe(`4: Get all Products Endpoint: ${endpoint}`, function () {
     
     it("test 1: gets all products.", function (done) {
-        request.get(endpoint, async (req: Request, res: Response) => {
-            const status = await res.statusCode;
+        request.get(endpoint, (req: Request, res: Response) => {
+            const status =  res.statusCode;
             expect(status).toEqual(200);
         });
         done();
@@ -22,10 +23,10 @@ describe(`4: Get all Products Endpoint: ${endpoint}`, function () {
     
 });
 
-describe(`5: Get Product by ID Endpoint: ${endpoint}/id/1`, function () {
+describe(`5: Get Product by ID Endpoint: ${endpoint}/:id`, function () {
     it("test 1: get product by ID.", function (done) {
-        request.get(`${endpoint}/id/1`, async (req: Request, res: Response) => {
-            const status = await res.statusCode;
+        request.get(`${endpoint}/1`, (req: Request, res: Response) => {
+            const status = res.statusCode;
             expect(status).toEqual(200);
         });
         done();
@@ -43,8 +44,8 @@ describe(`6: Create Products Endpoint: ${endpoint}`, function () {
             body: {pname: 'asmin', price: 'adsae', password:'pawefwer'},
             json: true
         }
-        request(options, async (req: Request, res: Response) => {
-            expect(await res.statusCode).toEqual(401);
+        request(options, (req: Request, res: Response) => {
+            expect(res.statusCode).toEqual(401);
         }); 
         done();
     });
@@ -63,8 +64,8 @@ describe(`6: Create Products Endpoint: ${endpoint}`, function () {
                 json: true
             }
 
-            request(options, async (req: Request, res: Response) => {
-                expect(await res.statusCode).toEqual(401);
+            request(options, (req: Request, res: Response) => {
+                expect(res.statusCode).toEqual(401);
             });
         });
         
@@ -85,8 +86,8 @@ describe(`6: Create Products Endpoint: ${endpoint}`, function () {
                 json: true
             }
 
-            request(options, async (req: Request, res: Response) => {
-                expect(await res.statusCode).toEqual(200);
+            request(options, (req: Request, res: Response) => {
+                expect(res.statusCode).toEqual(200);
             }); 
         });        
         done();

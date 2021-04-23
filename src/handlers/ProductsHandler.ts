@@ -54,7 +54,7 @@ const create =  async (req: Request, res: Response) => {
 
 const productRouter = (app: express.Application) => {
     app.get('/products/', index)
-    app.get('/products/id/:id', show)
+    app.get('/products/:id', show)
     app.get('/products/category/:category', productsByCategory)
     app.post('/products/', authenticateToken, create)
 };

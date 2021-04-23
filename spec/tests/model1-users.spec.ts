@@ -42,9 +42,9 @@ describe("1: Users model: ", function () {
      });
      
     it("test 6: gets user by ID", async function (done) {
-        const result = await user.getUsersById(2);
+        const result = await user.getUsersById(3);
 
-        const expectResults: IUser = {id: 2, firstname: 'John', lastname: 'Doe', username: "johndoe", password: 'newpassword1'} ;
+        const expectResults: IUser = {id: 3, firstname: 'John', lastname: 'Doe', username: "johndoe", password: 'newpassword1'} ;
         
         expect(result.id).toEqual(expectResults.id);
         expect(result.firstname).toEqual(expectResults.firstname);

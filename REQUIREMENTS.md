@@ -14,13 +14,14 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Users
 - Index [token required]: route: '/users' [GET]
 - Show (args: id)[token required] : route: '/users/:id' [GET]
-- Create (args: User)[token required] : route:'/users/:user' [POST]
+- Create (args: User) : route:'/users/:user' [POST]
 - Login (args: User) : route:'/users/login/ [POST]
 
 #### Orders
 - Current Order by user (args: user id)[token required] : route:'/orders/users/:id' [GET]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required] : route: '/orders/users/:id/complete/' [GET]
 - Add Product to an Order (args: quantity, order id, product id)[token required]: route: '/orders/:id/product/' [POST]
+- Create (args: Order)[token required] : route: '/orders/' [POST]
 
 ## Data Shapes
 #### Products

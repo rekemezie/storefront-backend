@@ -18,7 +18,9 @@ describe("2: Product model: ", function () {
     
     it("test 4: gets all products from database", async function (done) {
         const result  = await product.index();
-        expect(result.length).toEqual(1); 
+        
+        expect(result.length).toEqual(0); 
+
         done();
     });
      
@@ -37,15 +39,15 @@ describe("2: Product model: ", function () {
 
         const afterCreate = await product.index();
 
-        expect(afterCreate.length).toEqual(6);
+        expect(afterCreate.length).toEqual(5);
 
         done();
     });
 
     it("test 6: gets a product by Product ID", async function (done) {
 
-        const result = await product.getProductById(2)
-        const expectedResult: IProduct = {id: 2, name: 'shoe', price: 30, category: 'boot'};
+        const result = await product.getProductById(1)
+        const expectedResult: IProduct = {id: 1, name: 'shoe', price: 30, category: 'boot'};
 
         expect(result.id).toEqual(expectedResult.id);
         expect(result.name).toEqual(expectedResult.name);

@@ -152,7 +152,7 @@ Some products enpoints require a verified token before it can be accessed this w
 
 - To get all products we run `curl -X GET localhost:3000/products`
 
-#### /products/id/:id
+#### /products/:id
 
 - To get product by ID we run `curl -H 'Authorization: Bearer token' -X GET localhost:3000/products/id/1`
 
@@ -162,7 +162,7 @@ Some products enpoints require a verified token before it can be accessed this w
 
 ***Note: Replace `token` with the token you generated.***
 
-#### /prodcuts/
+#### /products/
 
 - To create a product we run `curl -d '{"name":"somename", "price":"2.34", "category":"somecategory"}' -X POST localhost:3000/products`
 

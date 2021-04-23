@@ -49,8 +49,8 @@ const create = async (req: Request, res: Response) => {
 };
 
 const authenticate = async (req: Request, res: Response) => { 
-    const username = JSON.parse(JSON.stringify(req.body.username));
-    const password = JSON.parse(JSON.stringify(req.body.password));
+    const username = req.body.username;
+    const password = req.body.password;
     
     try {
         const u = await users.authenticate(username, password)
@@ -67,7 +67,7 @@ const authenticate = async (req: Request, res: Response) => {
 const userRouter = (app: express.Application) => {
     app.get('/users/', authenticateToken, index)
     app.get('/users/:id', authenticateToken, show)
-    app.post('/users/', authenticateToken, create)
+    app.post('/users/', create)
     app.post('/users/login/', authenticate)
 };
 

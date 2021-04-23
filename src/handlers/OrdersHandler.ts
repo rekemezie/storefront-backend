@@ -35,9 +35,23 @@ const addProduct = async (req: Request, res: Response) => {
     }
 }
 
+const create = async (req: Request, res: Response) => {
+    try {
+        console.log(req.body)
+        const user_id = Number(req.body.user_id);
+        const status = req.body.status;
+        const results = await orders.createOrder({user_id, status});
+        res.status(200).json(results);
+    } catch {
+        return res.status(401).send('Failed to add product to order.');
+    }
+}
+
 const orderRouter = (app: express.Application) => {
     app.get('/orders/users/:id', authenticateToken, currentOrder)
     app.get('/orders/users/:id/complete', authenticateToken, complete)
+    app.post('/orders/', authenticateToken, create)
+    app.post('/orders/:id/product/', authenticateToken, addProduct)
 }
 
 
