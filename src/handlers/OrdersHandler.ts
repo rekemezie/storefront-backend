@@ -37,7 +37,6 @@ const addProduct = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
     try {
-        console.log(req.body)
         const user_id = Number(req.body.user_id);
         const status = req.body.status;
         const results = await orders.createOrder({user_id, status});

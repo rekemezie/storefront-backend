@@ -128,7 +128,7 @@ The users enpoints require a verified token before it can be accessed this we us
 #### /users/
 
 - To get all users we run `curl -H 'Authorization: Bearer token' -X GET localhost:3000/users` from a terminal 
-- We can also run the endpoint on postman include `Authorization: Bearer token` in the Header 
+- We can also run the endpoint on postman include `Authorization: Bearer token` in the Header. 
 
 #### /users/:id
 
@@ -136,7 +136,7 @@ The users enpoints require a verified token before it can be accessed this we us
 
 #### /users/
 
-- To create a users we run `curl -d '{"firstname":"somename", "lastname":"somelastname", "password":"somepasword"}' -H 'Authorization: Bearer token' -X POST localhost:3000/users`
+- To create a users we run `curl -d '{"firstname":"somename", "lastname":"somelastname", "password":"somepasword"}' -X POST localhost:3000/users`
 
 #### /users/login/
 
@@ -164,11 +164,15 @@ Some products enpoints require a verified token before it can be accessed this w
 
 #### /products/
 
-- To create a product we run `curl -d '{"name":"somename", "price":"2.34", "category":"somecategory"}' -X POST localhost:3000/products`
+- To create a product we run `curl -d '{"name":"somename", "price":"2.34", "category":"somecategory"}' -H 'Authorization: Bearer token' -X POST localhost:3000/products`
 
 
 ### Running Orders endpoints
-Some orders enpoints require a verified token before it can be accessed this we use the JWT secret to generate a token from `https://jwt.io/#debugger-io`, without any payload.
+Some orders enpoints require a verified token before it can be accessed this we use the JWT secret to generate a token from `https://jwt.io/#debugger-io`, without any payload. Get a token generated from user login to replace the token in the header.
+
+#### /orders/
+
+- To create a new order `curl -d '{"user_id":"1", "status":"active"}' -H 'Authorization: Bearer token' -X POST localhost:3000/orders/`
 
 #### /orders/users/:id
 
